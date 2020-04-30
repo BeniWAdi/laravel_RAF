@@ -7,8 +7,14 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
+
+import User from './helpers/User';
+window.User = User;
+
+console.log("User Id : "+User.getId());
 
 /**
  * The following block of code may be used to automatically register your

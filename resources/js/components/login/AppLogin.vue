@@ -32,9 +32,8 @@
         },
         methods : {
             login(){
-                axios.post('/api/auth/login', this.form)
-                .then(res => console.log(res.data))
-                .catch(error => console(error.response.data))
+                console.log('Form data : '+this.form.email);
+                User.login(this.form);
             }
         }
 
