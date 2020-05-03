@@ -18,6 +18,7 @@ class User{
         if (Token.isValid(access_token)){
             AppStorage.store(user, access_token);
         }
+        window.location = '/forum'
     }
 
     hasToken(){
@@ -35,6 +36,7 @@ class User{
 
     logOut(){
         AppStorage.clear();
+        window.location = '/forum'
     }
 
     getName(){
@@ -49,6 +51,10 @@ class User{
             //console.log('payload : '+payload);
             return payload.sub;
         }
+    }
+
+    own(id){
+        return this.getId() == id
     }
 }
 

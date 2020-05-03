@@ -12,12 +12,14 @@
 import AppToolbar from './layouts/AppToolbar'
 import AppFooter from './layouts/AppFooter'
 import AppLogin from './login/AppLogin'
+import AppCreateQuestion from './forum/AppCreateQuestion'
 
 export default {
     components:{
         AppToolbar,
         AppFooter,
-        AppLogin
+        AppLogin,
+        AppCreateQuestion
     }
 
 }

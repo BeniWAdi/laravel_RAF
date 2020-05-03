@@ -7,9 +7,16 @@ use App\Models\Question;
 use App\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Str;
 
 class QuestionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,10 +35,11 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //auth()->user()->questions()->create($request->all());
-        Question::create($request->all());
-        return response('Created', Response::HTTP_CREATED);
-
+        //$request['slug'] = Str::slug($request->title);
+        //Question::create($request->all());
+        $request['user_id'] = auth()->user()->id;
+        $question = auth()->user()->questions()->create($request->all());
+        return response(new QuestionResource($question), Response::HTTP_CREATED);
     }
 
     /**

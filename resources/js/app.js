@@ -11,10 +11,18 @@ window.Vue = require('vue');
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
 
+import VueSimplemde from 'vue-simplemde'
+import 'simplemde/dist/simplemde.min.css'
+Vue.component('vue-simplemde', VueSimplemde)
+
+import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
+
 import User from './helpers/User';
 window.User = User;
 
-console.log("User Id : "+User.getId());
+window.EventBus = new Vue()
+
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -41,3 +49,10 @@ const app = new Vue({
     vuetify: new Vuetify(),
     router,
 });
+
+export default new Vuetify({
+    icons: {
+      iconfont: 'mdi', // default - only for display purposes
+    },
+  })
+
